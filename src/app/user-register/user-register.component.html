@@ -1,0 +1,26 @@
+<div *ngIf="errorMessage" class="p-5 alert alert-danger" role="alert">{{errorMessage}}</div>
+<form class="p-5"  #f="ngForm" (ngSubmit)="submitForm(f)">
+    <div class="form-group ">
+    <label for="firstName">First Name:</label>
+    <input type="text" class="form-control" [class.is-invalid]="firstName.invalid && firstName.touched" required #firstName="ngModel" name="firstName" [(ngModel)]="userAccount.firstName">
+    <small class="text-danger" [class.d-none]="firstName.valid || firstName.untouched">First Name is required</small>    
+</div>
+    <div class="form-group ">
+            <label for="lastName">Last Name:</label>
+            <input type="text" class="form-control" [class.is-invalid]="lastName.invalid && lastName.touched" required #lastName="ngModel" name="lastName" [(ngModel)]="userAccount.lastName">
+            <small class="text-danger" [class.d-none]="lastName.valid || lastName.untouched">Last Name is required</small>
+        </div>
+    <div class="form-group ">
+            <label for="email">Email:</label>
+            <input type="text" class="form-control" [class.is-invalid]="email.invalid && email.touched" required #email="ngModel" name="email" [(ngModel)]="userAccount.email">
+            <small class="text-danger" [class.d-none]="email.valid || email.untouched">Email is required</small>
+    </div>        
+    <div class="form-group">
+    <label for="password">Password:</label>
+    <input type="password" class="form-control" [class.is-invalid]="password.invalid && password.touched" required #password="ngModel" name="password" [(ngModel)]="userAccount.password">
+    <small class="text-danger" [class.d-none]="password.valid || password.untouched">Password is required</small>    
+</div> 
+    <div class="text-right">
+    <button class="btn btn-primary" [disabled]="f.pristine || f.invalid" type="submit">Send</button> 
+    </div> 
+</form>
